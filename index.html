@@ -44,9 +44,7 @@
 
   const allURL = `${BASE}#data/${tbl}`;
   const catURL = c => `${BASE}#data/${tbl}?category=${encodeURIComponent(c)}&_hide=rationale`;
-  const llmURL = `${BASE}#data/${tbl}?_sort=category&_hide=username&_hide=confidence&_hide=sentiment_compound&_hide=rationale`;
-
-  const items = [
+  const llmURL = `${BASE}#data/${tbl}?_hide=user_id&_hide=confidence&_hide=sentiment_compound&_hide=rationale`;  const items = [
     ["All posts", allURL],
     ["LLM-Friendly (category, text)", llmURL],
     ...categories.map(c => [`Category: ${c}`, catURL(c)])

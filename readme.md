@@ -12,11 +12,8 @@ For ongoing analysis, true automation would require Facebook administrator privi
 
 ## Ethics and Privacy
 
-Although the posts used here come from a public Facebook group, they were shared by real students in a learning community.  
-Usernames have been included only because they are necessary for post validation  
+Although the posts come from a public Facebook group, usernames have been anonymized and replaced with incremental user IDs.
 
-Out of respect for fellow students, this dataset should be treated as **private** and not redistributed outside of this project context.  
-Any future analysis should prioritize anonymization and protect participant privacy wherever possible.
 ---
 
 ## Interacting with the Data
