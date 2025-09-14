@@ -6,19 +6,14 @@ These 217 posts are from **Sep 1 to Sep 14**, and only **top-level posts** (no c
 Only posts with text were kept.
 
 The intended use-case for this data is to demonstrate **LLM classification and summarization** for topic analysis.  
-For ongoing analysis, true automation would require Facebook administrator privileges and a verified Facebook app.
+For ongoing analysis, true automation would require Facebook administrator privileges and a verified Facebook app, discussed below.
 
 **Known limitations:** Some posts contain images or video which are important for context, and not available to the LLM for categorization.
 
-## Ethics and Privacy
-
-Although the posts come from a public Facebook group, usernames have been anonymized and replaced with incremental user IDs.
-
----
 
 ## Interacting with the Data
 
-The [Datasette Lite page](index.html) lets you browse the posts in different ways:
+The [Datasette Lite page](https://wgudataninja.github.io/fb_categorize_posts/) lets you browse the posts in different ways:
 
 - **All posts view**: Shows every column, including the **LLM’s rationale** behind its classification.  
 - **Category views**: Show only posts belonging to a given category, with rationale hidden.  
@@ -78,7 +73,7 @@ To properly analyze Facebook group data at scale, a business or group admin must
    - [Access Token Guide](https://developers.facebook.com/docs/facebook-login/access-tokens/)  
    - For groups, you typically need a **Page Access Token** or **System User Access Token**.
 
-Only with these steps (and admin privileges) can Facebook group data be accessed programmatically and securely.
+Only with these steps (and admin privileges) can Facebook group data be accessed programmatically.
 
 ---
 
@@ -91,3 +86,9 @@ Only with these steps (and admin privileges) can Facebook group data be accessed
   - `parse_fb_accelerators_sep_1-14_csv.py` (clean raw CSV)  
   - `LLM_categorize_fb.py` (categorize posts with GPT)  
   - `vader_sentiment_fb_accel_1-14.py` (add sentiment column)
+
+## Ethics and Privacy
+
+Although the posts come from a public Facebook group, usernames have been anonymized and replaced with incremental user IDs.
+
+---
