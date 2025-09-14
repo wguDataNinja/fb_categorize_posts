@@ -24,18 +24,17 @@
 </main>
 
 <script>
-  // set these
-  const CSV   = "PUT_PUBLIC_RAW_CSV_URL_HERE";
+  // CSV file hosted on GitHub Pages (relative path works too)
+  const CSV   = new URL('data/fb_accelerators_sep1-14_sentiment.csv', location.href).href;
   const TABLE = "fb_accelerators_sep1-14_sentiment";
 
-  // full category list
   const categories = [
     "celebrations_milestones",
     "course_help",
     "admin_mentor",
     "tech_platforms",
     "financial_aid_policy",
-   "general_experiences",
+    "general_experiences",
     "motivation_fun",
     "career_jobs_networking",
     "other"
@@ -44,19 +43,16 @@
   const BASE = `https://lite.datasette.io/?csv=${encodeURIComponent(CSV)}`;
   const tbl  = encodeURIComponent(TABLE);
 
-  // views
-  const allURL = `${BASE}#data/${tbl}`; // shows all columns (incl. rationale)
+  const allURL = `${BASE}#data/${tbl}`;
   const catURL = c => `${BASE}#data/${tbl}?category=${encodeURIComponent(c)}&_hide=rationale`;
-  // LLM-Friendly: all rows, sorted by category; only category + text
   const llmURL = `${BASE}#data/${tbl}?_sort=category&_hide=username&_hide=confidence&_hide=sentiment_compound&_hide=rationale`;
 
   const items = [
-    ["All posts (shows rationale)", allURL],
+    ["All posts", allURL],
     ["LLM-Friendly (category, text)", llmURL],
     ...categories.map(c => [`Category: ${c}`, catURL(c)])
   ];
 
-  // render
   const nav = document.getElementById("links");
   nav.innerHTML = items.map(([label, href]) => `<a href="${href}" target="ds">${label}</a>`).join("");
   document.getElementById("ds").src = items[0][1]; // default = All
