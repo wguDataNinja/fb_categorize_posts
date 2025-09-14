@@ -4,7 +4,7 @@
 import os, re, csv
 from bs4 import BeautifulSoup
 
-INPUT = "/Users/buddy/Desktop/projects/fb_categorize_posts/data/fb_accelerators_sep_1-14.html"
+INPUT = "/Users/buddy/Desktop/projects/fb_categorize_posts/data/fb_accelerators_sep_1-14_raw.html"
 OUTPUT_DIR = "//output"
 
 # ---------- tiny utils ----------

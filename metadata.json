@@ -1,0 +1,14 @@
+{
+  "title": "FB Accelerators",
+  "databases": {
+    "data": {
+      "tables": {
+        "fb_accelerators_sep1-14_sentiment": {
+          "title": "Accelerator Posts",
+          "description": "Categorized posts with sentiment scores",
+          "facets": ["category", "confidence", "sentiment_compound"]
+        }
+      }
+    }
+  }
+}

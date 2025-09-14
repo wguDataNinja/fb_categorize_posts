@@ -137,7 +137,7 @@ def extract_posts(html, min_chars):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("html_path", nargs="?", default="/Users/buddy/Desktop/projects/fb_categorize_posts/data/fb_accelerators_sep_1-14.html")
+    ap.add_argument("html_path", nargs="?", default="/Users/buddy/Desktop/projects/fb_categorize_posts/data/fb_accelerators_sep_1-14_raw.html")
     ap.add_argument("--out", default="-")
     ap.add_argument("--min-chars", type=int, default=80, help="minimum message length to treat as a post")
     args = ap.parse_args()

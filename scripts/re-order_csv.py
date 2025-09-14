@@ -13,4 +13,4 @@ new_order = [
 ]
 
 df = df[new_order]
-df.to_csv("../data/fb_accelerators_sep1-14_sentiment_reordered.csv", index=False)
+df.to_csv("../data/fb_accelerators_sep1-14_sentiment.csv", index=False)
