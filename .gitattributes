@@ -1,8 +1,0 @@
-# Don’t show diffs for CSV (treat as binary)
-*.csv diff=none
-
-# Ensure consistent line endings for scripts and HTML
-*.py text eol=lf
-*.html text eol=lf
-*.md text eol=lf
-*.json text eol=lf

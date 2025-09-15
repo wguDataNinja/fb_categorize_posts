@@ -1,10 +1,10 @@
-# Ignore everything by default
+# Ignore everything
 *
 
-# Keep .gitignore itself
+# Keep .gitignore
 !.gitignore
 
-# Allow only these files
+# Whitelist only these files
 !/scripts/LLM_categorize_fb.py
 !/index.html
 !/metadata.json
