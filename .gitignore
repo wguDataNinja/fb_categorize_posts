@@ -7,3 +7,5 @@
 !/data/fb_accelerators_sep1-14_sentiment.csv
 !/scripts/
 !/scripts/LLM_categorize_fb.py
+!/db/
+!/db/fb_accel_sep_1-14.db

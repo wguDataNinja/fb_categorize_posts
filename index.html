@@ -25,19 +25,16 @@
 </main>
 
 <script>
-  const CSV   = "https://wgudataninja.github.io/fb_categorize_posts/data/fb_accelerators_sep1-14_sentiment.csv";
+  const DBURL = "https://wgudataninja.github.io/fb_categorize_posts/db/fb_accel_sep_1-14.db";
   const TABLE = "fb_accelerators_sep1-14_sentiment";
-  const BASE  = `https://lite.datasette.io/?v=${Date.now()}&csv=${encodeURIComponent(CSV)}`;
+  const BASE  = `https://lite.datasette.io/?v=${Date.now()}&url=${encodeURIComponent(DBURL)}`;
   const tbl   = encodeURIComponent(TABLE);
-
-  const allURL = `${BASE}#data/${tbl}?&_facet=category&_nosuggest=1`;
-  const llmURL = `${BASE}#data/${tbl}?&_facet=category&_nosuggest=1&_col=category&_col=text`;
-
+  const allURL = `${BASE}#data/${tbl}?_facet=category&_nosuggest=1`;
+  const llmURL = `${BASE}#data/${tbl}?_facet=category&_nosuggest=1&_col=category&_col=text`;
   const items = [
     ["View Posts (All Columns)", allURL],
     ["View Posts (LLM-Friendly)", llmURL]
   ];
-
   document.getElementById("links").innerHTML =
     items.map(([label, href]) => `<a href="${href}" target="ds" rel="noopener">${label}</a>`).join("");
   document.getElementById("ds").src = items[0][1];
