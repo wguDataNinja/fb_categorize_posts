@@ -27,44 +27,17 @@
 <script>
   const CSV   = "https://wgudataninja.github.io/fb_categorize_posts/data/fb_accelerators_sep1-14_sentiment.csv";
   const TABLE = "fb_accelerators_sep1-14_sentiment";
-  const DB    = "data";
-
-  const categories = [
-    "celebrations_milestones",
-    "course_help",
-    "admin_mentor",
-    "tech_platforms",
-    "financial_aid_policy",
-    "general_experiences",
-    "motivation_fun",
-    "career_jobs_networking",
-    "other"
-  ];
 
   const BASE  = `https://lite.datasette.io/?csv=${encodeURIComponent(CSV)}`;
-  const sqlURL = (sql) => `${BASE}#${DB}?sql=${encodeURIComponent(sql)}&_size=max`;
+  const tbl   = encodeURIComponent(TABLE);
 
-  // All posts → table view (sortable + facets)
-  const allURL = `${BASE}#data/${encodeURIComponent(TABLE)}?_facet=category`;
-
-  // LLM-friendly: only category + text, sorted by category
-  const llmURL = sqlURL(`
-    select category, text
-    from [${TABLE}]
-    order by category, text
-  `);
-
-  // Category-specific SQL views (hide rationale, drop link/rowid)
-  const catURL = (c) => sqlURL(`
-    select user_id, category, confidence, sentiment_compound, text
-    from [${TABLE}]
-    where category = ${JSON.stringify(c)}
-  `);
+  // Table views (sortable, with facets)
+  const allURL = `${BASE}#data/${tbl}?_facet=category&_nocol=link`;
+  const llmURL = `${BASE}#data/${tbl}?_facet=category&_col=category&_col=text&_nocol=link`;
 
   const items = [
-    ["All posts (sortable table with facets)", allURL],
-    ["LLM-Friendly (category, text)", llmURL],
-    ...categories.map(c => [`Category: ${c}`, catURL(c)])
+    ["View Posts (All Columns)", allURL],
+    ["View Posts (LLM-Friendly)", llmURL]
   ];
 
   const nav = document.getElementById("links");
