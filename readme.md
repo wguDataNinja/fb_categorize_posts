@@ -39,6 +39,7 @@ The total cost to classify all 217 posts was about **$0.01**.
 
 After classification, posts were **clustered with ChatGPT** into subcategories.  
 Each category lists its subgroups and post IDs for a quick view of key discussion areas.  
+
 ---
 
 <details>
