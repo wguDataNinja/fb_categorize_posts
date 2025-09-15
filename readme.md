@@ -30,7 +30,7 @@ ___
 ## Categorization
 
 We used **ChatGPT 4o-mini** to classify posts into broad themes.  
-Each classification includes a confidence score and, in full view, the model’s rationale.  
+Each classification includes a confidence score and the model’s rationale.  
 The total cost to classify all 217 posts was about **$0.01**.  
 
 ---
