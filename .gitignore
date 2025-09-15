@@ -1,0 +1,12 @@
+# Ignore everything by default
+*
+
+# Keep .gitignore itself
+!.gitignore
+
+# Allow only these files
+!/scripts/LLM_categorize_fb.py
+!/index.html
+!/metadata.json
+!/readme.md
+!/data/fb_accelerators_sep1-14_sentiment.csv
