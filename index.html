@@ -31,9 +31,12 @@
   const BASE  = `https://lite.datasette.io/?csv=${encodeURIComponent(CSV)}`;
   const tbl   = encodeURIComponent(TABLE);
 
-  // Table views (sortable, with facets)
-  const allURL = `${BASE}#data/${tbl}?_facet=category&_nocol=link`;
-  const llmURL = `${BASE}#data/${tbl}?_facet=category&_col=category&_col=text&_nocol=link`;
+  // Both are real table pages (sortable) with category facet
+  // You can hide rowid, but not the auto link column in table mode
+  const allURL = `${BASE}#data/${tbl}?_facet=category&_nocol=rowid`;
+
+  // LLM-friendly: show only category and text (still a table), facet on category
+  const llmURL = `${BASE}#data/${tbl}?_facet=category&_col=category&_col=text&_nocol=rowid`;
 
   const items = [
     ["View Posts (All Columns)", allURL],

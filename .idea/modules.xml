@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/facebook_scraper.iml" filepath="$PROJECT_DIR$/.idea/facebook_scraper.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../fb_categorize_posts/.idea/fb_categorize_posts.iml" filepath="$PROJECT_DIR$/../fb_categorize_posts/.idea/fb_categorize_posts.iml" />
     </modules>
   </component>
 </project>
