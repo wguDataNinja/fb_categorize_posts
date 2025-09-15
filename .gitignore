@@ -1,12 +1,9 @@
-# Ignore everything
 *
-
-# Keep .gitignore
 !.gitignore
-
-# Whitelist only these files
-!/scripts/LLM_categorize_fb.py
 !/index.html
 !/metadata.json
 !/readme.md
+!/data/
 !/data/fb_accelerators_sep1-14_sentiment.csv
+!/scripts/
+!/scripts/LLM_categorize_fb.py
