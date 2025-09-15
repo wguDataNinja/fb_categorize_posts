@@ -1,11 +1,12 @@
 <!doctype html>
 <meta charset="utf-8">
-<title>FB Accelerators – Datasette Lite</title>
+<title>FB WGU Accelerators Prototype – Datasette Lite</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
   body{font:16px system-ui,-apple-system,Segoe UI,Roboto,sans-serif;margin:0}
   header{padding:24px}
-  h1{margin:0 0 8px 0;font-size:20px}
+  h1{margin:0 0 4px 0;font-size:20px}
+  .sub{margin:0 0 8px 0;font-size:13px;color:#666}
   main{display:grid;grid-template-columns:280px 1fr;gap:16px;padding:0 24px 24px}
   nav a{display:block;margin:6px 0;text-decoration:none}
   nav a:hover,nav a:focus{text-decoration:underline}
@@ -14,8 +15,8 @@
 </style>
 
 <header>
-  <h1>FB Accelerators</h1>
-  <div>All posts shows every column. Category views hide rationale. LLM-Friendly shows only category and text.</div>
+  <h1>FB WGU Accelerators Prototype</h1>
+  <p class="sub">216 posts from 9/1 to 9/14 2025</p>
 </header>
 
 <main>
@@ -43,17 +44,17 @@
   const BASE  = `https://lite.datasette.io/?csv=${encodeURIComponent(CSV)}`;
   const sqlURL = (sql) => `${BASE}#${DB}?sql=${encodeURIComponent(sql)}&_size=max`;
 
-  // Views
-  const allURL = sqlURL(`
-    select user_id, category, confidence, sentiment_compound, rationale, text
-    from [${TABLE}]
-  `);
+  // All posts → table view (sortable + facets)
+  const allURL = `${BASE}#data/${encodeURIComponent(TABLE)}?_facet=category`;
 
+  // LLM-friendly: only category + text, sorted by category
   const llmURL = sqlURL(`
     select category, text
     from [${TABLE}]
+    order by category, text
   `);
 
+  // Category-specific SQL views (hide rationale, drop link/rowid)
   const catURL = (c) => sqlURL(`
     select user_id, category, confidence, sentiment_compound, text
     from [${TABLE}]
@@ -61,7 +62,7 @@
   `);
 
   const items = [
-    ["All posts", allURL],
+    ["All posts (sortable table with facets)", allURL],
     ["LLM-Friendly (category, text)", llmURL],
     ...categories.map(c => [`Category: ${c}`, catURL(c)])
   ];
