@@ -1,7 +1,7 @@
 {
   "title": "FB Accelerators",
   "databases": {
-    "data": {
+    "fb_accel_sep_1-14": {
       "tables": {
         "fb_accelerators_sep1-14_sentiment": {
           "title": "Accelerator Posts",
