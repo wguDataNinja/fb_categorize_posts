@@ -10,6 +10,7 @@ For ongoing analysis, true automation would require Facebook administrator privi
 
 **Known limitations:** Some posts contain images or video which are important for context, and not available to the LLM for categorization.
 
+Usernames have been anonymized and replaced with incremental IDs. 
 
 ## Interacting with the Data
 

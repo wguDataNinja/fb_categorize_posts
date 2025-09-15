@@ -26,6 +26,7 @@
 <script>
   const CSV   = "https://wgudataninja.github.io/fb_categorize_posts/data/fb_accelerators_sep1-14_sentiment.csv";
   const TABLE = "fb_accelerators_sep1-14_sentiment";
+  const DB    = "data";
 
   const categories = [
     "celebrations_milestones",
@@ -39,12 +40,27 @@
     "other"
   ];
 
-  const BASE = `https://lite.datasette.io/?csv=${encodeURIComponent(CSV)}`;
-  const tbl  = encodeURIComponent(TABLE);
+  const BASE  = `https://lite.datasette.io/?csv=${encodeURIComponent(CSV)}`;
+  const sqlURL = (sql) => `${BASE}#${DB}?sql=${encodeURIComponent(sql)}&_size=max`;
 
-  const allURL = `${BASE}#data/${tbl}`;
-  const catURL = c => `${BASE}#data/${tbl}?category=${encodeURIComponent(c)}&_hide=rationale`;
-  const llmURL = `${BASE}#data/${tbl}?_hide=user_id&_hide=confidence&_hide=sentiment_compound&_hide=rationale`;  const items = [
+  // Views
+  const allURL = sqlURL(`
+    select user_id, category, confidence, sentiment_compound, rationale, text
+    from [${TABLE}]
+  `);
+
+  const llmURL = sqlURL(`
+    select category, text
+    from [${TABLE}]
+  `);
+
+  const catURL = (c) => sqlURL(`
+    select user_id, category, confidence, sentiment_compound, text
+    from [${TABLE}]
+    where category = ${JSON.stringify(c)}
+  `);
+
+  const items = [
     ["All posts", allURL],
     ["LLM-Friendly (category, text)", llmURL],
     ...categories.map(c => [`Category: ${c}`, catURL(c)])
@@ -52,5 +68,5 @@
 
   const nav = document.getElementById("links");
   nav.innerHTML = items.map(([label, href]) => `<a href="${href}" target="ds">${label}</a>`).join("");
-  document.getElementById("ds").src = items[0][1]; // default = All
+  document.getElementById("ds").src = items[0][1];
 </script>
