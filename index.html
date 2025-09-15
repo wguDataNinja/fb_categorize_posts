@@ -25,16 +25,13 @@
 </main>
 
 <script>
-  // IMPORTANT: must be an https URL, not a local path
   const CSV   = "https://wgudataninja.github.io/fb_categorize_posts/data/fb_accelerators_sep1-14_sentiment.csv";
-  const TABLE = "fb_accelerators_sep1-14_sentiment"; // filename without .csv
-  const BUST  = Date.now(); // cache-buster to avoid stale copies
-  const BASE  = `https://lite.datasette.io/?v=${BUST}&csv=${encodeURIComponent(CSV)}`;
+  const TABLE = "fb_accelerators_sep1-14_sentiment";
+  const BASE  = `https://lite.datasette.io/?v=${Date.now()}&csv=${encodeURIComponent(CSV)}`;
   const tbl   = encodeURIComponent(TABLE);
 
-  // Table views (sortable) with category facet; hide suggested facets
-  const allURL = `${BASE}#data/${tbl}?_facet=category&_nosuggest=1&_hide=id`;
-  const llmURL = `${BASE}#data/${tbl}?_facet=category&_nosuggest=1&_col=category&_col=text`;
+  const allURL = `${BASE}#data/${tbl}?&_facet=category&_nosuggest=1`;
+  const llmURL = `${BASE}#data/${tbl}?&_facet=category&_nosuggest=1&_col=category&_col=text`;
 
   const items = [
     ["View Posts (All Columns)", allURL],

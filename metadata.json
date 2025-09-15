@@ -6,6 +6,7 @@
         "fb_accelerators_sep1-14_sentiment": {
           "title": "Accelerator Posts",
           "description": "Categorized posts with sentiment scores",
+          "pk": "id",
           "facets": ["category", "confidence", "sentiment_compound"]
         }
       }
